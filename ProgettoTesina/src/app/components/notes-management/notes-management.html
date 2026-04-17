@@ -1,0 +1,109 @@
+<div class="users-page-layout">
+
+    <aside class="users-list-pane">
+        <a routerLink="/admin" class="back-btn"><svg width="20" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="15" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>Indietro</a>
+        <h2>Elenco Appunti</h2>
+
+        <div class="items-list">
+            @for (note of dummyNotes; track note.id) {
+            <div class="user-card" (click)="selectNote(note)" [class.active]="selectedNote === note">
+
+                <div class="user-avatar">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                        <polyline points="10 9 9 9 8 9"></polyline>
+                    </svg>
+                </div>
+
+                <div class="user-info">
+                    <h4>{{ note.titolo }}</h4>
+                    <p>{{ note.nomeCreatore }} {{ note.cognomeCreatore }}</p>
+                </div>
+            </div>
+            }
+        </div>
+    </aside>
+
+    <main class="user-details-pane">
+
+        @if (selectedNote) {
+        <div class="details-card">
+            <div class="details-header">
+                <div class="details-avatar-large">
+                    <svg width="45" height="45" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                    </svg>
+                </div>
+                <div class="details-title">
+                    <h2>{{ selectedNote.titolo }}</h2>
+                    <span class="role-badge">File Caricato</span>
+                </div>
+            </div>
+
+            <div class="details-body">
+                <div class="info-group">
+                    <label>Nome Creatore</label>
+                    <p>{{ selectedNote.nomeCreatore }}</p>
+                </div>
+                <div class="info-group">
+                    <label>Cognome Creatore</label>
+                    <p>{{ selectedNote.cognomeCreatore }}</p>
+                </div>
+                <div class="info-group">
+                    <label>Classe</label>
+                    <p>{{ selectedNote.classe }}</p>
+                </div>
+                <div class="info-group">
+                    <label>Anno della classe</label>
+                    <p>{{ selectedNote.annoClasse }}</p>
+                </div>
+                <div class="info-group">
+                    <label>Dimensione File</label>
+                    <p>{{ selectedNote.dimensioneFile }}</p>
+                </div>
+                <div class="info-group">
+                    <label>Data Caricamento</label>
+                    <p>{{ selectedNote.dataCaricamento }}</p>
+                </div>
+                <div class="info-group">
+                    <label>Valutazione</label>
+                    <p>
+                        {{ selectedNote.valutazione }} / 5
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="#f1c40f" stroke="#f1c40f"
+                            stroke-width="2">
+                            <polygon
+                                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                            </polygon>
+                        </svg>
+                    </p>
+                </div>
+
+                <button class="action-btn">Gestisci Appunti</button>
+                <button class="action-btn">Gestisci Utente</button>
+                <button class="action-btn">Cancella Appunti</button>
+
+            </div>
+        </div>
+        }
+        @else {
+        <div class="empty-state">
+            <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                class="empty-icon">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+            </svg>
+            <h3>Nessun file selezionato</h3>
+            <p>Seleziona un appunto dalla lista a sinistra per visualizzarne i dettagli.</p>
+        </div>
+        }
+
+    </main>
+</div>

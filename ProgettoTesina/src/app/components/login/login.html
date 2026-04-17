@@ -1,0 +1,23 @@
+<div class="login-container">
+    <div class="login-card">
+        <h2>Bentornato su VallauriNotes!</h2>
+        <form action="#">
+            <div class="input-group">
+                <label for="username">Email o Username</label>
+                <input type="text" id="username" placeholder="Inserisci la tua email" required>
+            </div>
+            
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Inserisci la password" required>
+            </div>
+
+            <div class="forgot-password">
+                <a routerLink="/forgot-password">Password dimenticata?</a>
+            </div>
+
+            <button type="submit" class="login-btn">Accedi</button>
+        </form>
+        <p class="signup-link">Non hai un account? <a routerLink="/register">Registrati</a></p>
+    </div>
+</div>

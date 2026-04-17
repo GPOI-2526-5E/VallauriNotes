@@ -1,0 +1,167 @@
+/* ==========================================
+   GLOBAL RESET
+   ========================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ==========================================
+   MAIN STRUCTURE - SIGNUP (Tema Viola)
+   ========================================== */
+.signup-container {
+  min-height: 100vh;
+  width: 100%;
+  /* Sfondo gradiente viola professionale */
+  background: linear-gradient(135deg,  #1e3c72, #2a5298);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.signup-container .signup-card {
+  width: 100%;
+  max-width: 500px;
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 24px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+  text-align: center;
+}
+
+.signup-container .signup-card h2 {
+  color: #2d3436;
+  margin-bottom: 25px;
+  font-size: 2rem;
+  letter-spacing: -0.5px;
+}
+
+/* ==========================================
+   FORM GRID & INPUT STYLING
+   ========================================== */
+.form-row {
+  display: flex;
+  gap: 10px;
+}
+
+.form-row .input-group {
+  flex: 1;
+}
+
+.input-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #738186;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* Input e Select unificati */
+.input-group input,
+.input-group select {
+  width: 100%;
+  padding: 14px 16px;
+  border: 2px solid transparent;
+  background-color: #f1f2f6;
+  border-radius: 12px;
+  font-size: 1rem;
+  color: #2d3436;
+  transition: all 0.3s ease;
+  outline: none;
+  cursor: pointer;
+}
+
+/* Focus: bordo viola */
+.input-group input:focus,
+.input-group select:focus {
+  border-color:  #2a5298;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(42, 82, 152, 0.15);
+}
+
+/* ==========================================
+   ANIMATED BUTTON (Gradiente Viola/Blu pulito)
+   ========================================== */
+.submit-btn {
+  width: 100%;
+  padding: 16px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+
+  /* Gradiente semplificato: da viola a blu acceso */
+  background: linear-gradient(135deg, #2a5298, #1e3c72);
+  transition: transform 0.2s ease, background 0.3s ease, box-shadow 0.2s ease;
+}
+
+.submit-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(108, 92, 231, 0.4);
+  /* Bagliore viola */
+}
+
+.submit-btn:active {
+  transform: translateY(1px);
+  box-shadow: 0 5px 10px rgba(108, 92, 231, 0.2);
+}
+
+/* ==========================================
+   FOOTER LINKS UNIFICATI (Standardizzati a Viola)
+   ========================================== */
+.login-link {
+  margin-top: 25px;
+  color: #738186;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.login-link a {
+  /* STILE UNIFICATO: Grassetto, No Sottolineatura, Colore Viola */
+  color: #1e3c72;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.login-link a:hover {
+  color: #3d2cd4;
+  /* Hover viola più scuro */
+}
+
+/* ==========================================
+   KEYFRAMES & MEDIA QUERIES
+   ========================================== */
+@keyframes colorShift {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@media (max-width: 480px) {
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .signup-container .signup-card {
+    padding: 30px 20px;
+  }
+}

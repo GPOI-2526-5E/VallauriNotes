@@ -1,0 +1,447 @@
+/* ==========================================
+   RESET E STRUTTURA BASE
+   ========================================== */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Layout a due colonne (Flexbox) */
+.admin-layout {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+    background-color: #f1f2f6;
+    /* Sfondo chiaro per l'area di lavoro */
+}
+
+/* ==========================================
+   SIDEBAR (PARTE SINISTRA)
+   ========================================== */
+.sidebar {
+    width: 260px;
+    background-color: #2d3436;
+    /* Grigio molto scuro/Elegante */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+.sidebar-header {
+    padding: 30px 20px;
+    background-color: #1e2426;
+    text-align: center;
+    border-bottom: 1px solid #3d4548;
+}
+
+.sidebar-header h2 {
+    color: #a29bfe;
+    /* Il lilla del tuo tema */
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+}
+
+.sidebar-nav {
+    flex: 1;
+    /* Prende tutto lo spazio disponibile */
+    padding-top: 20px;
+}
+
+.sidebar-nav ul {
+    list-style: none;
+}
+
+.sidebar-nav li a {
+    display: block;
+    padding: 15px 25px;
+    color: #b2bec3;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border-left: 4px solid transparent;
+}
+
+.sidebar-nav li a:hover,
+.sidebar-nav li a.active {
+    background-color: rgba(108, 92, 231, 0.1);
+    color: #ffffff;
+    border-left: 4px solid #6c5ce7;
+    /* Il viola del tuo tema */
+}
+
+.sidebar-footer {
+    padding: 20px;
+    border-top: 1px solid #3d4548;
+}
+
+.logout-btn {
+    display: block;
+    text-align: center;
+    padding: 10px;
+    background-color: rgba(255, 118, 117, 0.1);
+    color: #ff7675;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background 0.3s;
+}
+
+.logout-btn:hover {
+    background-color: #ff7675;
+    color: white;
+}
+
+/* ==========================================
+   MAIN CONTENT (PARTE CENTRALE/DESTRA)
+   ========================================== */
+.main-content {
+    flex: 1;
+    /* Occupa tutto lo spazio a destra della sidebar */
+    padding: 40px;
+    overflow-y: auto;
+}
+
+.topbar {
+    margin-bottom: 40px;
+}
+
+.topbar h1 {
+    color: #2d3436;
+    font-size: 2.2rem;
+    margin-bottom: 5px;
+}
+
+.topbar p {
+    color: #738186;
+    font-size: 1.1rem;
+}
+
+/* ==========================================
+   STATISTICHE (CARDS)
+   ========================================== */
+.dashboard-stats {
+    display: flex;
+    gap: 30px;
+}
+
+.stat-card {
+    flex: 1;
+    /* Le card si dividono lo spazio in parti uguali */
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 5px solid #6c5ce7;
+    /* Riga viola in alto */
+    transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+}
+
+.stat-info h3 {
+    color: #738186;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+.stat-info .stat-number {
+    color: #2d3436;
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.stat-icon {
+    font-size: 3rem;
+    background: rgba(108, 92, 231, 0.1);
+    padding: 20px;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ==========================================
+   SEZIONE PROFILO (Header Sidebar)
+   ========================================== */
+.sidebar-header {
+    padding: 40px 20px 20px 20px;
+    background-color: transparent;
+    border-bottom: 1px solid #3d4548;
+}
+
+.profile-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-avatar {
+    position: relative;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background-color: #1b2845;
+    /* Colore blu scuro della tua foto */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+/* Bordo azzurro quando il mouse passa sopra */
+.profile-avatar:hover {
+    border-color: #82ccdd;
+}
+
+.avatar-default {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    transition: opacity 0.3s ease;
+}
+
+.user-icon {
+    width: 45px;
+    height: 45px;
+    color: #f1f2f6;
+}
+
+/* Overlay che compare in hover */
+.avatar-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: rgba(27, 40, 69, 0.95);
+    /* Sfondo scuro semi-trasparente */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.profile-avatar:hover .avatar-default {
+    opacity: 0;
+}
+
+.profile-avatar:hover .avatar-overlay {
+    opacity: 1;
+}
+
+.upload-icon {
+    width: 30px;
+    height: 30px;
+    color: white;
+    margin-bottom: 5px;
+}
+
+/* Badge "EDIT" che sporge in basso */
+.edit-badge {
+    position: absolute;
+    bottom: -10px;
+    background-color: #0f172a;
+    color: white;
+    font-size: 0.65rem;
+    font-weight: bold;
+    padding: 4px 14px;
+    border-radius: 12px;
+    border: 1px solid white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.profile-role {
+    margin-top: 20px;
+    color: #dfe6e9;
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+/* ==========================================
+   SEZIONE LISTE (Due Colonne)
+   ========================================== */
+.dashboard-lists {
+  display: flex;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.list-container {
+  flex: 1; /* Divide lo spazio a metà */
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+}
+
+.list-container h2 {
+  color: #2d3436;
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+}
+
+/* Barra di Ricerca */
+.search-box {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.search-box .search-icon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  color: #a4b0be;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 12px 15px 12px 45px;
+  border: 1px solid #dfe4ea;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  background-color: #f8f9fa;
+  color: #2d3436;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.search-box input:focus {
+  border-color: #6c5ce7;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.1);
+}
+
+/* Contenitore con scroll bar per le liste lunghe */
+.items-list {
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Personalizzazione Scrollbar */
+.items-list::-webkit-scrollbar { width: 6px; }
+.items-list::-webkit-scrollbar-track { background: #f1f2f6; border-radius: 10px; }
+.items-list::-webkit-scrollbar-thumb { background: #ced6e0; border-radius: 10px; }
+.items-list::-webkit-scrollbar-thumb:hover { background: #a4b0be; }
+
+/* --- CARD UTENTI --- */
+.user-card {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  border: 1px solid #f1f2f6;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+}
+
+.user-card:hover {
+  background-color: #f8f9fa;
+  border-color: #dfe4ea;
+  transform: translateY(-2px);
+}
+
+.user-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #f1f2f6;
+  margin-right: 15px;
+}
+
+.user-info h4 {
+  color: #2d3436;
+  font-size: 1.05rem;
+  margin-bottom: 3px;
+}
+
+.user-info p {
+  color: #738186;
+  font-size: 0.85rem;
+}
+
+/* --- CARD APPUNTI --- */
+.note-card {
+  display: flex;
+  flex-direction: column;
+  padding: 18px 15px;
+  border: 1px solid #f1f2f6;
+  border-radius: 12px;
+  border-left: 4px solid #a29bfe; /* Linea lilla laterale */
+  transition: all 0.2s ease;
+}
+
+.note-card:hover {
+  background-color: #f8f9fa;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+  transform: translateY(-2px);
+}
+
+.note-sector {
+  color: #a4b0be;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+
+.note-topic {
+  color: #2d3436;
+  font-size: 1.1rem;
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+.note-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: #738186;
+  flex-wrap: wrap; /* Utile se lo schermo si restringe */
+  gap: 10px;
+}
+
+.prof-name {
+  color: #6c5ce7;
+  font-weight: 500;
+  background-color: rgba(108, 92, 231, 0.1);
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+.student-info strong {
+  color: #2d3436;
+}

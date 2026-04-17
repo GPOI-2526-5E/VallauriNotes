@@ -1,0 +1,281 @@
+/* ==========================================
+   1. LAYOUT GENERALE (Diviso perfettamente a metà)
+   ========================================== */
+.users-page-layout {
+    display: flex;
+    gap: 30px;
+    /* Spazio tra le due metà */
+    padding: 40px;
+    height: 100vh;
+    background-color: #f1f2f6;
+    /* Sfondo grigio chiaro per far risaltare i pannelli bianchi */
+    box-sizing: border-box;
+}
+
+/* ==========================================
+   2. PANNELLO SINISTRO: Lista Utenti (50%)
+   ========================================== */
+.users-list-pane {
+    flex: 1;
+    /* Prende esattamente metà spazio */
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+}
+
+.users-list-pane h2 {
+    color: #2d3436;
+    margin-bottom: 20px;
+}
+
+/* Contenitore con scroll bar per la lista */
+.items-list {
+    overflow-y: auto;
+    padding-right: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Scrollbar */
+.items-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.items-list::-webkit-scrollbar-track {
+    background: #f1f2f6;
+    border-radius: 10px;
+}
+
+.items-list::-webkit-scrollbar-thumb {
+    background: #ced6e0;
+    border-radius: 10px;
+}
+
+/* Singolo Utente nella Lista */
+.user-card {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border: 1px solid #f1f2f6;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.user-card:hover {
+    background-color: #f8f9fa;
+    border-color: #dfe4ea;
+    transform: translateY(-2px);
+}
+
+.user-card.active {
+    background-color: rgba(108, 92, 231, 0.05);
+    border-color: #6c5ce7;
+    border-left: 5px solid #6c5ce7;
+    transform: translateY(0);
+}
+
+.user-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #e0f7fa;
+    color: #00acc1;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 15px;
+    object-fit: cover;
+}
+
+.user-info h4 {
+    color: #2d3436;
+    margin-bottom: 3px;
+}
+
+.user-info p {
+    color: #738186;
+    font-size: 0.85rem;
+}
+
+/* ==========================================
+   3. PANNELLO DESTRO: Dettagli Utente (50%)
+   ========================================== */
+.user-details-pane {
+    flex: 1;
+    /* Prende l'altra metà esatta dello spazio */
+    display: flex;
+    flex-direction: column;
+}
+
+/* IL RIQUADRO BIANCO DEI DETTAGLI */
+.details-card {
+    background-color: #ffffff;
+    /* Sfondo bianco come il pannello sinistro */
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    flex: 1;
+    /* Si allunga per coprire l'altezza disponibile */
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Intestazione (Foto + Nome) */
+.details-header {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #f1f2f6;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+}
+
+.details-avatar-large {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #e0f7fa;
+    color: #00acc1;
+    width: 100px !important;
+    height: 100px !important;
+    border-radius: 50%;
+    background-color: #f1f2f6;
+    margin-right: 25px;
+    border: 3px solid #6c5ce7;
+    object-fit: cover;
+}
+
+.details-title h2 {
+    color: #2d3436;
+    font-size: 2rem;
+    margin-bottom: 8px;
+}
+
+.role-badge {
+    background-color: #e0f7fa;
+    color: #00acc1;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+/* Corpo dei Dettagli (Griglia) */
+.details-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.info-group label {
+    display: block;
+    color: #a4b0be;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+.info-group p {
+    color: #2d3436;
+    font-size: 1.1rem;
+    font-weight: 500;
+    display: flex;
+    /* Trasforma il paragrafo in un contenitore flessibile */
+    align-items: center;
+    /* Centra perfettamente in verticale il testo e la moneta */
+    gap: 6px;
+    /* Aggiunge un piccolo spazio elegante tra il numero e l'icona */
+}
+
+/* Stato Attivo (Pallino verde) */
+.status-active {
+    color: #27ae60;
+}
+
+.status-active::before {
+    content: "● ";
+    font-size: 1.2rem;
+}
+
+/* Bottone Modifica */
+.action-btn {
+    grid-column: 1 / -1;
+    margin-top: 30px;
+    padding: 14px 25px;
+    background-color: #6c5ce7;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+    justify-self: start;
+}
+
+.action-btn:hover {
+    background-color: #5b4bc4;
+}
+
+.back-btn {
+  display: inline-flex;    /* Rende il bottone compatto e permette di usare Flexbox all'interno */
+  align-items: center;     /* Centra perfettamente in verticale l'icona e il testo */
+  gap: 8px;                /* Aggiunge uno spazio pulito tra la freccia e la scritta */
+  align-self: flex-start;  /* Forza il bottone ad allinearsi tutto a sinistra */
+  padding: 10px 16px;      /* Imbottitura bilanciata (sopra/sotto e destra/sinistra) */
+  background-color: rgba(226, 63, 63, 0.267);
+  color: #ff7675;
+  border: none;            /* Rimuove eventuali bordi standard del bottone html */
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.back-btn:hover {
+  background-color: #ff7675;
+  color: white;
+  transform: translateX(-3px); /* Piccolo tocco extra: fa slittare il bottone a sinistra al passaggio del mouse */
+}
+
+/* STATO VUOTO (Nessun utente selezionato) */
+.empty-state {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    border-radius: 20px;
+    border: 2px dashed #dfe4ea;
+    color: #a4b0be;
+    text-align: center;
+}
+
+.empty-icon {
+    color: #ced6e0;
+    margin-bottom: 20px;
+}
+
+.empty-state h3 {
+    color: #738186;
+    margin-bottom: 10px;
+}

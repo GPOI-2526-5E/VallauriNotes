@@ -1,0 +1,20 @@
+/* You can add global styles to this file, and also import other style files */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%; /* Questo aiuta anche a prevenire fastidiose barre di scorrimento */
+}
+
+:root {
+    --font-main: 'Inter', sans-serif;
+    --font-title: 'Poppins', sans-serif;
+  }
+  
+  body {
+    font-family: var(--font-main);
+    -webkit-font-smoothing: antialiased; /* Rende il font più nitido su Mac/iOS */
+  }
+  
+  h1, h2, h3 {
+    font-family: var(--font-title);
+  }

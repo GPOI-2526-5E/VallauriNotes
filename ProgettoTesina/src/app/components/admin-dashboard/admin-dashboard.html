@@ -1,0 +1,124 @@
+<div class="admin-layout">
+
+    <aside class="sidebar">
+        <div class="sidebar-header">
+
+            <div class="profile-section">
+                <div class="profile-avatar" (click)="openProfileModal()">
+
+                    <div class="avatar-default">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" class="user-icon">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </div>
+
+                    <div class="avatar-overlay">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" class="upload-icon">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="17 8 12 3 7 8"></polyline>
+                            <line x1="12" y1="3" x2="12" y2="15"></line>
+                        </svg>
+                        <span class="edit-badge">EDIT</span>
+                    </div>
+
+                </div>
+                <h3 class="profile-role">Amministratore</h3>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <ul>
+                <li><a href="#" class="active">Dashboard</a></li>
+                <li><a routerLink="/users-list">Elenco Utenti</a></li>
+                <li><a routerLink="/notes-management">Gestione Appunti</a></li>
+                <li><a routerLink="/settings">Impostazioni</a></li>
+            </ul>
+        </nav>
+
+        <div class="sidebar-footer">
+            <a routerLink="/login" class="logout-btn">Esci</a>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <header class="topbar">
+            <h1>Panoramica Sistema</h1>
+            <p>Benvenuto nell'area di amministrazione di VallauriNotes.</p>
+        </header>
+
+        <section class="dashboard-stats">
+
+            <div class="stat-card">
+                <div class="stat-info">
+                    <h3>Totale Utenti</h3>
+                    <p class="stat-number">{{ numeroUtenti }}</p>
+                </div>
+                <div class="stat-icon">👥</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-info">
+                    <h3>Appunti Caricati</h3>
+                    <p class="stat-number">{{ numeroAppunti }}</p>
+                </div>
+                <div class="stat-icon">📄</div>
+            </div>
+
+        </section>
+        <section class="dashboard-lists">
+
+            <div class="list-container">
+                <h2>Gestione Utenti</h2>
+                <div class="search-box">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="search-icon">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <input type="text" placeholder="Cerca per nome, cognome o email...">
+                </div>
+
+                <div class="items-list">
+                    @for (user of dummyUsers; track user.email) {
+                    <div class="user-card">
+                        <img [src]="user.avatar" alt="Avatar" class="user-avatar">
+                        <div class="user-info">
+                            <h4>{{ user.nome }} {{ user.cognome }}</h4>
+                            <p>{{ user.email }}</p>
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+
+            <div class="list-container">
+                <h2>Ultimi Appunti</h2>
+                <div class="search-box">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="search-icon">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <input type="text" placeholder="Cerca per argomento o professore...">
+                </div>
+
+                <div class="items-list">
+                    @for (note of dummyNotes; track note.argomento) {
+                    <div class="note-card">
+                        <span class="note-sector">{{ note.settore }}</span>
+                        <h4 class="note-topic">{{ note.argomento }}</h4>
+                        <div class="note-meta">
+                            <span class="prof-name">Prof. {{ note.professore }}</span>
+                            <span class="student-info">Caricato da: <strong>{{ note.studente }} ({{ note.classe }}{{
+                                    note.sezione }})</strong></span>
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+</div>

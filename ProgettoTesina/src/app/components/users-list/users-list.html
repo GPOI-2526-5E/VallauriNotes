@@ -1,0 +1,84 @@
+<div class="users-page-layout">
+
+    <aside class="users-list-pane">
+        <a routerLink="/admin" class="back-btn"><svg width="20" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="15" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>Indietro</a>
+        <h2>Elenco Utenti</h2>
+
+        <div class="items-list">
+            @for (user of dummyUsers; track user.email) {
+            <div class="user-card" (click)="selectUser(user)" [class.active]="selectedUser === user">
+                <img [src]="user.avatar" alt="Avatar" class="user-avatar">
+                <div class="user-info">
+                    <h4>{{ user.nome }} {{ user.cognome }}</h4>
+                    <p>{{ user.email }}</p>
+                </div>
+            </div>
+            }
+        </div>
+    </aside>
+
+    <main class="user-details-pane">
+
+        @if (selectedUser) {
+        <div class="details-card">
+            <div class="details-header">
+                <img [src]="selectedUser.avatar" alt="Avatar Grande" class="details-avatar-large">
+                <div class="details-title">
+                    <h2>{{ selectedUser.nome }} {{ selectedUser.cognome }}</h2>
+                    <span class="role-badge">Studente</span>
+                </div>
+            </div>
+
+            <div class="details-body">
+                <div class="info-group">
+                    <label>Nome</label>
+                    <p>Nome</p>
+                </div>
+                <div class="info-group">
+                    <label>Cognome</label>
+                    <p>Cognome</p>
+                </div>
+                <div class="info-group">
+                    <label>Classe</label>
+                    <p>Classe</p>
+                </div>
+                <div class="info-group">
+                    <label>Sezione</label>
+                    <p>Sezione</p>
+                </div>
+                <div class="info-group">
+                    <label>Indirizzo Email</label>
+                    <p>{{ selectedUser.email }}</p>
+                </div>
+                <div class="info-group">
+                    <label>Data Iscrizione</label>
+                    <p>Settembre 2023</p>
+                </div>
+                <div class="info-group">
+                    <label>Crediti</label>
+                    <p>128<img src="/svg/coins.svg" width="30" height="30" /></p>
+                </div>
+
+                <button class="action-btn edit-btn">Modifica Utente</button>
+            </div>
+        </div>
+        }
+        @else {
+        <div class="empty-state">
+            <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                class="empty-icon">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M12 16v-4"></path>
+                <path d="M12 8h.01"></path>
+            </svg>
+            <h3>Nessun utente selezionato</h3>
+            <p>Seleziona un utente dalla lista a sinistra per visualizzare i dettagli.</p>
+        </div>
+        }
+
+    </main>
+</div>
